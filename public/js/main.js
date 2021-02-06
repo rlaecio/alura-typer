@@ -1,6 +1,6 @@
 var tempoInicial = $("#tempo-digitacao").text()
 
-$(function(){
+$(function() {
     atualizaTamanhoFrase();
     inicializaContatores();
     inicializaCronometro();
@@ -8,6 +8,10 @@ $(function(){
     $("#botao-reiniciar").click(reiniciaJogo);
 });
 
+function atualizaTempoInicial(tempo) {
+    tempoInicial = tempo;
+    $("#tempo-digitacao").text(tempo);
+}
 
 function atualizaTamanhoFrase() {
     var frase = $(".frase").text();
@@ -17,10 +21,11 @@ function atualizaTamanhoFrase() {
 }
 
 var campo = $(".campo-digitacao");
+
 function inicializaContatores() {
-    campo.on("input", function(){
+    campo.on("input", function() {
         var conteudo = campo.val();
-        var qtdPalavras = conteudo.split(/\S+/).length -1;
+        var qtdPalavras = conteudo.split(/\S+/).length - 1;
         $("#contador-palavras").text(qtdPalavras);
         var qtdCaracteres = conteudo.length;
         $("#contador-caracteres").text(qtdCaracteres);
@@ -28,33 +33,31 @@ function inicializaContatores() {
 }
 
 function inicializaCronometro() {
-    var tempoRestante = tempoInicial;
     campo.one("focus", function() {
-        $("#botao-reiniciar").attr("disabled",true);
-        var cronometroID = setInterval(function(){
+        var tempoRestante = tempoInicial;
+        $("#botao-reiniciar").attr("disabled", true);
+        var cronometroID = setInterval(function() {
             tempoRestante--;
             $("#tempo-digitacao").text(tempoRestante);
             if (tempoRestante < 1) {
                 clearInterval(cronometroID);
                 finalizaJogo();
             }
-        },1000);
+        }, 1000);
     });
 }
 
 function finalizaJogo() {
     campo.attr("disabled", true);
-    $("#botao-reiniciar").attr("disabled",false);
+    $("#botao-reiniciar").attr("disabled", false);
     campo.toggleClass("campo-desativado");
     inserePlacar();
 }
 
-function inicializaMarcadores() {   
-    var frase = $(".frase").text();
-    campo.on("input", function(){
+function inicializaMarcadores() {
+    campo.on("input", function() {
+        var frase = $(".frase").text();
         var digitado = campo.val();
-        // var comparavel = frase.substr(0 , digitado.length);  // versão jQuery anterior ao ecma6
-        // if(digitado == comparavel) {
         var digitouCorreto = frase.startsWith(digitado)
         if (digitouCorreto) {
             campo.addClass("borda-verde");

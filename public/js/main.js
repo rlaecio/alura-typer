@@ -7,6 +7,18 @@ $(function() {
     inicializaMarcadores();
     $("#botao-reiniciar").click(reiniciaJogo);
     atualizaPlacar();
+    
+    // ativa o plugin selectize 
+    $('#usuarios').selectize({
+        create: true,
+        sortField: 'text'
+    });
+
+    //ativa o plugin tooltipster
+    $(".tooltip").tooltipster({
+        trigger: "custom"
+    });
+
 });
 
 function atualizaTempoInicial(tempo) {

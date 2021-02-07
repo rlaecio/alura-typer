@@ -4,7 +4,7 @@ $("#botao-sync").click(sincronizaPlacar);
 function inserePlacar() {
     var corpoTabela = $(".placar").find("tbody");
     var numPalavras = $("#contador-palavras").text();
-    var usuario = "Roque Laecio";
+    var usuario = $("#usuarios").val();
     var linha = novaLinha(usuario,numPalavras);
     linha.find(".botao-remover").click(removeLinha);
 
@@ -58,7 +58,7 @@ function mostraPlacar() {
 }
 
 function sincronizaPlacar() {
-    $("#spinner").toggle();
+    // $("#spinner").toggle();
     var placar = [];
     var linhas = $("tbody>tr");
     linhas.each(function () {
@@ -77,9 +77,16 @@ function sincronizaPlacar() {
     };
     $.post("http://localhost:3000/placar", dados, function() {
         console.log("Salvou na base de dados");
-    })
-    .always(function () {
-        $("#spinner").toggle();
+        $(".tooltip").tooltipster("open").tooltipster("content", "Sucesso ao sincronizar"); 
+    }).fail(function(){
+        $(".tooltip").tooltipster("open").tooltipster("content", "Falha ao sincronizar"); 
+    }).always(function () {
+        // setTimeout(function () {
+        //     $("#spinner").toggle();
+        // }, 600)
+        setTimeout(function() {
+            $(".tooltip").tooltipster("close"); 
+        }, 1200);
     });
 }
 

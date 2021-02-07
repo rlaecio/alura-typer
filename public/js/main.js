@@ -21,7 +21,6 @@ function atualizaTamanhoFrase() {
 }
 
 var campo = $(".campo-digitacao");
-
 function inicializaContatores() {
     campo.on("input", function() {
         var conteudo = campo.val();

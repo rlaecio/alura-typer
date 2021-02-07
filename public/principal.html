@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Alura Typer</title>
@@ -7,11 +8,14 @@
     <link rel="stylesheet" href="css/libs/google-fonts.css">
     <link rel="stylesheet" href="css/estilos.css">
 </head>
+
 <body>
     <div class="container">
-        <h1 class="center ">Alura Typer</h1>
+        <h1 class="center">Alura Typer</h1>
         <p class="frase center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam nulla quidem eveniet eaque provident itaque deserunt! Facilis cumque unde et voluptate dolorum eius quam, enim illum fugiat quia, autem repellat!</p>
-        
+
+        <div class="center" id="erro">Occoreu um erro, por favor tente novamente</div>
+
         <ul class="informacoes center">
             <li>
                 <i class="small material-icons icones">description</i>
@@ -28,12 +32,12 @@
             <a class="btn-floating btn-large waves-effect waves-light green" id="botao-placar"><i class="material-icons">assignment</i></a>
             <a class="btn-floating btn-large waves-effect waves-light blue" id="botao-frase"><i class="material-icons">shuffle</i></a>
         </div>
-       
+
         <ul class="center">
             <li><span id="contador-caracteres">0</span> caracteres</li>
             <li><span id="contador-palavras">0</span> palavras</li>
         </ul>
-        
+
         <section class="placar">
             <h3 class="center">Placar</h3>
             <table class="centered bordered">
@@ -47,7 +51,7 @@
             </table>
         </section>
     </div>
-    
+
 
     <script src="js/jquery.js"></script>
     <script src="js/materialize.min.js"></script>
@@ -55,4 +59,5 @@
     <script src="js/placar.js"></script>
     <script src="js/frase.js"></script>
 </body>
+
 </html>
